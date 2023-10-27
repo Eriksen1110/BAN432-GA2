@@ -74,9 +74,8 @@ kept_indices <- rownames(as.matrix(dtm))
 # Subset the crec dataframe using these indices
 subset_crec <- crec[as.numeric(kept_indices), ]
 
-topic_assignments <- topics(topic, 1)
-
 # Add the topic assignments to the subsetted dataframe
+topic_assignments <- topics(topic, 1)
 subset_crec$topic <- topic_assignments
 
 # View the first few rows of the subsetted dataframe to confirm
@@ -106,7 +105,7 @@ topic_counts_late <- late_period %>%
 # Create the bar chart
 ggplot(topic_counts_early, aes(x = factor(topic), y = count)) +
   geom_bar(stat = "identity", fill = "steelblue") +
-  labs(title = "Prevalence of Topics in Documents",
+  labs(title = "Prevalence of Topics in Documents (early)",
        x = "Topic",
        y = "Number of Documents") +
   theme_minimal() +
@@ -114,7 +113,7 @@ ggplot(topic_counts_early, aes(x = factor(topic), y = count)) +
 
 ggplot(topic_counts_late, aes(x = factor(topic), y = count)) +
   geom_bar(stat = "identity", fill = "green") +
-  labs(title = "Prevalence of Topics in Documents",
+  labs(title = "Prevalence of Topics in Documents (late)",
        x = "Topic",
        y = "Number of Documents") +
   theme_minimal() +
@@ -147,7 +146,7 @@ party_count_early <- early_period %>%
 ggplot(party_count_early, aes(x = factor(topic), y = count, fill = party)) +
   geom_bar(stat = "identity", position = "dodge") +
   scale_fill_manual(values = c("Republican" = "red", "Democrat" = "blue")) +
-  labs(title = "Topics by Party",
+  labs(title = "Topics by Party (early)",
        x = "Topic",
        y = "Number of Documents") +
   theme_minimal() +
@@ -165,7 +164,7 @@ party_count_late <- late_period %>%
 ggplot(party_count_late, aes(x = factor(topic), y = count, fill = party)) +
   geom_bar(stat = "identity", position = "dodge") +
   scale_fill_manual(values = c("Republican" = "red", "Democrat" = "blue")) +
-  labs(title = "Topics by Party",
+  labs(title = "Topics by Party (late)",
        x = "Topic",
        y = "Number of Documents") +
   theme_minimal() +
