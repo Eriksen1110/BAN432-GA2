@@ -74,6 +74,8 @@ kept_indices <- rownames(as.matrix(dtm))
 # Subset the crec dataframe using these indices
 subset_crec <- crec[as.numeric(kept_indices), ]
 
+topic_assignments <- topics(topic, 1)
+
 # Add the topic assignments to the subsetted dataframe
 subset_crec$topic <- topic_assignments
 
